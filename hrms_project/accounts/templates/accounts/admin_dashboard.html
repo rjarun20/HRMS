@@ -1,0 +1,26 @@
+<!-- templates/accounts/admin_dashboard.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HRMS</title>
+    <link rel="stylesheet" type="text/css" href="/static/accounts/dashboard.css">
+    <!-- Print the value of the static URL -->
+    <p>{{ STATIC_URL }} % static % accounts/dashboard.css</p>
+    <style>
+        body {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        <p>Welcome, Admin! Manage the HRMS system here.</p>
+        <h2>User Data:</h2>
+        <pre>{{ user_data|safe }}</pre>
+    </div>
+</body>
+</html>
