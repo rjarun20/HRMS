@@ -1,0 +1,16 @@
+<!-- templates/accounts/approve_leaves.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Approve Leave Requests</h1>
+<ul>
+    {% for leave in leave_requests %}
+        <li>{{ leave.employee_name }} - {{ leave.leave_dates }} - {{ leave.status }}</li>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="approve" value="{{ leave.id }}">Approve</button>
+            <button type="submit" name="reject" value="{{ leave.id }}">Reject</button>
+        </form>
+    {% endfor %}
+</ul>
+{% endblock %}

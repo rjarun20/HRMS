@@ -1,0 +1,11 @@
+<!-- templates/accounts/pending_kyc.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Pending KYC Applications</h1>
+<ul>
+    {% for application in pending_applications %}
+        <li>{{ application.user_name }} - Submitted on {{ application.submitted_on }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

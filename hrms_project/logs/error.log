@@ -1,0 +1,21 @@
+ERROR 2024-08-22 14:32:59,191 auth_views 29160 138188926682880 Login error for user kavitha.ramamoorthy@tsvglobal.com: Login failed: Email not confirmed
+ERROR 2024-08-22 14:33:05,617 auth_views 29160 138188918290176 Login error for user kavitha.ramamoorthy@tsvglobal.com: Login failed: Email not confirmed
+ERROR 2024-08-22 14:44:20,129 user_views 32774 137091811575552 Error during User creation: Error creating user: User not allowed
+ERROR 2024-08-22 15:46:20,519 log 56413 135435820988160 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/workspaces/HRMS/hrms_project/hrms_project/urls.py", line 8, in <lambda>
+    path('', lambda request: redirect('login')),  # Redirect root URL to the login page
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/django/shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/django/shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+ERROR 2024-08-22 15:46:20,520 basehttp 56413 135435820988160 "GET / HTTP/1.1" 500 95379

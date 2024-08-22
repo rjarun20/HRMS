@@ -1,0 +1,11 @@
+<!-- templates/accounts/kyc_reports.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>KYC Reports</h1>
+<ul>
+    {% for report in kyc_report_data %}
+        <li>{{ report.user_name }} - Status: {{ report.status }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

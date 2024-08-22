@@ -1,0 +1,70 @@
+<!-- templates/accounts/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HRMS - Admin Dashboard{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/dashboard.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>{% block header %}Admin Dashboard{% endblock %}</h1>
+            <a href="{% url 'accounts:logout' %}" class="btn btn-outline-danger">Logout</a>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                {% block nav %}
+                <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:admin_dashboard' %}"><i class="fas fa-home"></i> Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:create_user' %}"><i class="fas fa-user-plus"></i> Create User</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:list_users' %}"><i class="fas fa-list"></i> List Users</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:add_employee' %}"><i class="fas fa-user-tie"></i> Add Employee</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:list_employees' %}"><i class="fas fa-list"></i> List Employees</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:approve_leaves' %}"><i class="fas fa-check-circle"></i> Approve Leaves</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:leave_reports' %}"><i class="fas fa-chart-bar"></i> Leave Reports</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:pending_kyc' %}"><i class="fas fa-clock"></i> Pending KYC</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:kyc_reports' %}"><i class="fas fa-file-alt"></i> KYC Reports</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                {% endblock %}
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

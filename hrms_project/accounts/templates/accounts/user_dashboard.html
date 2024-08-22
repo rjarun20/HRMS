@@ -1,19 +1,9 @@
-<!-- templates/accounts/user_dashboard.html -->
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard - HRMS</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/dashboard.css' %}">
-</head>
-<body>
-    <div class="dashboard-container">
-        <h1>User Dashboard</h1>
-        <p>Welcome! Manage your personal HR information here.</p>
-        <h2>User Data:</h2>
-        <pre>{{ user_data|safe }}</pre>
-    </div>
-</body>
-</html>
+{% extends 'accounts/base.html' %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user_data.user_metadata.first_name }}</h2>
+<p>This is your user dashboard. Here you can view your personal information and perform allowed actions.</p>
+<!-- Add more user-specific content here -->
+{% endblock %}

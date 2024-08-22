@@ -1,26 +1,70 @@
 <!-- templates/accounts/admin_dashboard.html -->
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - HRMS</title>
-    <link rel="stylesheet" type="text/css" href="/static/accounts/dashboard.css">
-    <!-- Print the value of the static URL -->
-    <p>{{ STATIC_URL }} % static % accounts/dashboard.css</p>
-    <style>
-        body {
-            background-color: red;
-        }
-    </style>
-</head>
-<body>
-    <div class="dashboard-container">
-        <h1>Admin Dashboard</h1>
-        <p>Welcome, Admin! Manage the HRMS system here.</p>
-        <h2>User Data:</h2>
-        <pre>{{ user_data|safe }}</pre>
+{% extends 'accounts/base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<section id="user-management" class="dashboard-section" role="region" aria-labelledby="user-management-heading">
+    <h2 id="user-management-heading">User Management</h2>
+    <div class="dashboard-content">
+        <a href="{% url 'accounts:create_user' %}" class="dashboard-card">
+            <i class="fas fa-user-plus"></i>
+            <h3>Create User</h3>
+            <p>Add a new user to the system</p>
+        </a>
+        <a href="{% url 'accounts:list_users' %}" class="dashboard-card">
+            <i class="fas fa-list"></i>
+            <h3>List Users</h3>
+            <p>View and manage existing users</p>
+        </a>
     </div>
-</body>
-</html>
+</section>
+
+<section id="employee-management" class="dashboard-section" role="region" aria-labelledby="employee-management-heading">
+    <h2 id="employee-management-heading">Employee Management</h2>
+    <div class="dashboard-content">
+        <a href="{% url 'accounts:add_employee' %}" class="dashboard-card">
+            <i class="fas fa-user-plus"></i>
+            <h3>Add Employee</h3>
+            <p>Register a new employee</p>
+        </a>
+        <a href="{% url 'accounts:list_employees' %}" class="dashboard-card">
+            <i class="fas fa-list"></i>
+            <h3>List Employees</h3>
+            <p>View and manage employee records</p>
+        </a>
+    </div>
+</section>
+
+<section id="leave-management" class="dashboard-section" role="region" aria-labelledby="leave-management-heading">
+    <h2 id="leave-management-heading">Leave Management</h2>
+    <div class="dashboard-content">
+        <a href="{% url 'accounts:approve_leaves' %}" class="dashboard-card">
+            <i class="fas fa-check-circle"></i>
+            <h3>Approve Leaves</h3>
+            <p>Review and approve leave requests</p>
+        </a>
+        <a href="{% url 'accounts:leave_reports' %}" class="dashboard-card">
+            <i class="fas fa-chart-bar"></i>
+            <h3>Leave Reports</h3>
+            <p>Generate leave reports</p>
+        </a>
+    </div>
+</section>
+
+<section id="kyc-management" class="dashboard-section" role="region" aria-labelledby="kyc-management-heading">
+    <h2 id="kyc-management-heading">KYC Management</h2>
+    <div class="dashboard-content">
+        <a href="{% url 'accounts:pending_kyc' %}" class="dashboard-card">
+            <i class="fas fa-clock"></i>
+            <h3>Pending KYC</h3>
+            <p>Review pending KYC applications</p>
+        </a>
+        <a href="{% url 'accounts:kyc_reports' %}" class="dashboard-card">
+            <i class="fas fa-file-alt"></i>
+            <h3>KYC Reports</h3>
+            <p>Generate KYC status reports</p>
+        </a>
+    </div>
+</section>
+{% endblock %}
