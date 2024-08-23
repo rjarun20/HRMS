@@ -1,4 +1,6 @@
 /* static/accounts/dashboard.css */
+
+/* General body and dashboard styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -134,4 +136,17 @@ body {
     .dashboard-nav li {
         padding: 10px;
     }
+}
+
+/* Disabled card styling */
+.dashboard-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none; /* Completely disables interaction */
+}
+
+.dashboard-card.disabled i,
+.dashboard-card.disabled h3,
+.dashboard-card.disabled p {
+    color: #aaa; /* Gray out the text and icons */
 }

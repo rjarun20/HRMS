@@ -8,12 +8,12 @@ def home_view(request):
 
     if user_data:
         if user_data['user_metadata'].get('is_admin'):
-            return redirect('admin_dashboard')
+            return redirect('accounts:admin_dashboard')
         else:
-            return redirect('user_dashboard')
+            return redirect('accounts:user_dashboard')
     else:
         messages.error(request, "User data not found. Please log in again.")
-        return redirect('login')
+        return redirect('accounts:login')
     
     
 @login_required
@@ -24,7 +24,7 @@ def admin_dashboard(request):
         return render(request, 'accounts/admin_dashboard.html', {'user_data': user_data})
     else:
         messages.error(request, "You do not have permission to access this page.")
-        return redirect('home')
+        return redirect('accounts:home')
 
 @login_required
 def user_dashboard(request):

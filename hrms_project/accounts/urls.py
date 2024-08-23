@@ -4,12 +4,10 @@ from .views import auth_views, dashboard_views, user_views, employee_views, leav
 app_name = 'accounts'
 
 urlpatterns = [
-    # Authentication URLs
-    path('auth/', include([
-        path('login/', auth_views.login_view, name='login'),
-        path('logout/', auth_views.logout_view, name='logout'),
-    ])),
-    
+    # Authentication URLs (Flattening)
+    path('login/', auth_views.login_view, name='login'),
+    path('logout/', auth_views.logout_view, name='logout'),
+
     # Dashboard URLs
     path('dashboard/', include([
         path('', dashboard_views.home_view, name='home'),

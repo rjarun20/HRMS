@@ -19,5 +19,5 @@ def admin_required(view_func):
         else:
             logger.warning(f"Non-admin user {request.user} attempted to access admin-only view")
             messages.error(request, "You don't have permission to access this page.")
-            return redirect('home')
+            return redirect('accounts:home')
     return wrapper

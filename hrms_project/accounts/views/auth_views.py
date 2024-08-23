@@ -1,6 +1,7 @@
 import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.messages import get_messages
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,10 @@ from ..exceptions import AuthenticationError
 logger = logging.getLogger(__name__)
 
 def login_view(request):
+        # Clear any existing messages
+    storage = get_messages(request)
+    for message in storage:
+        pass
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -26,7 +31,7 @@ def login_view(request):
             messages.success(request, f"Welcome back, {email}!")
             django_user, created = User.objects.get_or_create(username=email)
             auth_login(request, django_user)
-            return redirect('home')
+            return redirect('accounts:home')
         except AuthenticationError as e:
             logger.error(f"Login error for user {email}: {str(e)}")
             messages.error(request, str(e))
@@ -43,4 +48,4 @@ def logout_view(request):
         logger.error(f"Logout error: {str(e)}")
         messages.error(request, f"An error occurred during logout: {str(e)}")
     
-    return redirect('login')
+    return redirect('accounts:home')

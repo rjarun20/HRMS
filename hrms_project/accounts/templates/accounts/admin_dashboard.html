@@ -23,48 +23,49 @@
 <section id="employee-management" class="dashboard-section" role="region" aria-labelledby="employee-management-heading">
     <h2 id="employee-management-heading">Employee Management</h2>
     <div class="dashboard-content">
-        <a href="{% url 'accounts:add_employee' %}" class="dashboard-card">
+        <!-- Use <div> instead of <a> to make them non-clickable -->
+        <div class="dashboard-card disabled">
             <i class="fas fa-user-plus"></i>
             <h3>Add Employee</h3>
             <p>Register a new employee</p>
-        </a>
-        <a href="{% url 'accounts:list_employees' %}" class="dashboard-card">
+        </div>
+        <div class="dashboard-card disabled">
             <i class="fas fa-list"></i>
             <h3>List Employees</h3>
             <p>View and manage employee records</p>
-        </a>
+        </div>
     </div>
 </section>
 
 <section id="leave-management" class="dashboard-section" role="region" aria-labelledby="leave-management-heading">
     <h2 id="leave-management-heading">Leave Management</h2>
     <div class="dashboard-content">
-        <a href="{% url 'accounts:approve_leaves' %}" class="dashboard-card">
+        <div class="dashboard-card disabled">
             <i class="fas fa-check-circle"></i>
             <h3>Approve Leaves</h3>
             <p>Review and approve leave requests</p>
-        </a>
-        <a href="{% url 'accounts:leave_reports' %}" class="dashboard-card">
+        </div>
+        <div class="dashboard-card disabled">
             <i class="fas fa-chart-bar"></i>
             <h3>Leave Reports</h3>
             <p>Generate leave reports</p>
-        </a>
+        </div>
     </div>
 </section>
 
 <section id="kyc-management" class="dashboard-section" role="region" aria-labelledby="kyc-management-heading">
     <h2 id="kyc-management-heading">KYC Management</h2>
     <div class="dashboard-content">
-        <a href="{% url 'accounts:pending_kyc' %}" class="dashboard-card">
+        <div class="dashboard-card disabled">
             <i class="fas fa-clock"></i>
             <h3>Pending KYC</h3>
             <p>Review pending KYC applications</p>
-        </a>
-        <a href="{% url 'accounts:kyc_reports' %}" class="dashboard-card">
+        </div>
+        <div class="dashboard-card disabled">
             <i class="fas fa-file-alt"></i>
             <h3>KYC Reports</h3>
             <p>Generate KYC status reports</p>
-        </a>
+        </div>
     </div>
 </section>
 {% endblock %}
